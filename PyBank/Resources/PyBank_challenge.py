@@ -1,13 +1,15 @@
-import os
 import csv
+import os
+output="analysis/"
+
 total=0
 
-csvpath= os.path.join('Resources', 'budget_data.csv')
+csvpath = "/Users/laurakemp/Documents/Homework/python-challenge/PyBank/Resources/budget_data.csv"
 
 # Open current budget CSV
-with open(csvpath, 'r') as csvFile:
+with open(csvpath) as csvFile:
    
-    budgetdata=csv.reader(csvFile, delimiter=',')
+    budgetdata=csv.reader(csvFile)
     
 # Skip headers
     header = next(budgetdata, None)
@@ -29,6 +31,11 @@ with open(csvpath, 'r') as csvFile:
     # Calculate greatest increase and greatest decrease and append to the list
     
 
+    output= "Financial Analysis"
+    output= "total"
+    output= "averagechange"
+
+
 # Specify the file to write to
 output_path=os.path.join("analysis", "budgetanalysis.txt")
 
@@ -39,4 +46,4 @@ output = (
 
 # Open the file using "write" mode.  Specify the variable to hold the contents
 with open(output_path, 'w', newline='') as text_file:
-    text_file.write("some text here")
+    text_file.write("Financial Analysis")
