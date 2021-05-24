@@ -8,7 +8,9 @@ totalMonth=0
 netchange=[]
 monthYear=[]
 greatestdecreasemonth=""
-greatestincreasemonth=''
+greatestincreasemonth=""
+greatestdecrease=""
+greatestincrease=""
 
 csvpath = "/Users/laurakemp/Documents/Homework/python-challenge/PyBank/Resources/budget_data.csv"
 
@@ -46,7 +48,7 @@ with open(csvpath) as csvFile:
     x=-99999
     for i in range(len(netchange)):
         if netchange[i]>x:
-            x=netchange[i]
+            greatestincrease=netchange[i]
             greatestincreasemonth=monthYear[i]
             #print(i)
             #print(monthYear[i])
@@ -55,36 +57,30 @@ with open(csvpath) as csvFile:
     y=999999999999
     for i in range(len(netchange)):
         if netchange[i]<y:
-            y=netchange[i]
+            greatestdecrease=netchange[i]
             greatestdecreasemonth=monthYear[i]
             #print(i)
             #print(monthYear[i])
 
         #print(netchange[i])
         
-    print(x)
+    print(greatestincrease)
     print(greatestincreasemonth)
-    print(y)
+    print(greatestdecrease)
     print(greatestdecreasemonth)
 
 # Specify the file to write to
 output_path=os.path.join("analysis", "budgetanalysis.txt")
+output= (  
+    f"Financial Analysis\n" +
+    f"------------------------\n" +
+    f"Total Months: {totalMonth}\n" +
+    f"Total: ${totalNet}\n" +
+    f"Average Change: ${averagechange}\n".format(round,2) +
+    f"Greatest Increase in Profits: {greatestincrease} (${greatestincreasemonth})\n" +
+    f"Greatest Decrease in Profits: {greatestdecrease} (${greatestdecreasemonth})\n")  
+print(output)
 
 # Open the file using "write" mode.  Specify the variable to hold the contents
 with open(output, 'w', newline='') as text_file:
-    output=str(budgetdata())
-    text_to_write= ""
-    text_to_write+=("Financial Analysis" ''
-    text_to_write+= "Total Months: " ''
-    text_to_write+=totalMonth ''
-    text_to_write+="Total: " ''
-    text_to_write+= "totalNet:${}".format ''
-    text_to_write+="Average Change: "
-    text_to_write+="averagechange:${}".format(round,2)
-    text_to_write+= "Greatest Increase in Profits: "
-    text_to_write+= greatestincreasemonth
-    text_to_write+="x:${}".format 
-    text_to_write+="Greatest Decrease in Profits:" 
-    text_to_write+=greatestdecreasemonth 
-    text_to_write+="y:${}".format 
-    
+   text_file.write(output)
