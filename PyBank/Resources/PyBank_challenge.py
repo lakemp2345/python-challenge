@@ -9,8 +9,8 @@ netchange=[]
 monthYear=[]
 greatestdecreasemonth=""
 greatestincreasemonth=""
-greatestdecrease=""
-greatestincrease=""
+greatestdecrease=0
+greatestincrease=0
 
 csvpath = "/Users/laurakemp/Documents/Homework/python-challenge/PyBank/Resources/budget_data.csv"
 
@@ -45,18 +45,18 @@ with open(csvpath) as csvFile:
     #print(monthYear)
     #print(netchange)
 
-    x=-99999
+    greatestincrease=-99999
     for i in range(len(netchange)):
-        if netchange[i]>x:
+        if netchange[i]>greatestincrease:
             greatestincrease=netchange[i]
             greatestincreasemonth=monthYear[i]
             #print(i)
             #print(monthYear[i])
         #print(netchange[i])
 
-    y=999999999999
+    greatestdecrease=999999999999
     for i in range(len(netchange)):
-        if netchange[i]<y:
+        if netchange[i]<greatestdecrease:
             greatestdecrease=netchange[i]
             greatestdecreasemonth=monthYear[i]
             #print(i)
