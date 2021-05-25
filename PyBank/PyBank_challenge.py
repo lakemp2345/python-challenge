@@ -77,10 +77,10 @@ output= (
     f"Total Months: {totalMonth}\n" +
     f"Total: ${totalNet}\n" +
     f"Average Change: ${averagechange}\n".format(round,2) +
-    f"Greatest Increase in Profits: {greatestincrease} (${greatestincreasemonth})\n" +
-    f"Greatest Decrease in Profits: {greatestdecrease} (${greatestdecreasemonth})\n")  
+    f"Greatest Increase in Profits: (${greatestincrease}) {greatestincreasemonth}\n" +
+    f"Greatest Decrease in Profits: (${greatestdecrease}) {greatestdecreasemonth}\n")  
 print(output)
 
 # Open the file using "write" mode.  Specify the variable to hold the contents
-with open(output, 'w', newline='') as text_file:
+with open(output_path, 'w', newline='') as text_file:
    text_file.write(output)
